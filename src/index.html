@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; script-src 'self'">
+<title>MCQ &amp; CQ Slide Maker</title>
+<link rel="stylesheet" href="../node_modules/katex/dist/katex.min.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/hind-siliguri/500.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/hind-siliguri/600.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/hind-siliguri/700.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/barlow/500.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/barlow/600.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/barlow/700.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/barlow/800.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/barlow-condensed/700.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+<h1>MCQ &amp; CQ Slide Maker</h1>
+<div class="toolbar"><button id="open">Open</button><button id="save" class="primary">Save (Ctrl+S)</button><button id="saveas">Save as…</button></div>
+
+<div class="dock">
+ <div id="stage"></div>
+ <div class="deck"><button id="prev">◀</button><span id="cnt">1 / 1</span><button id="next">▶</button><button id="add">+ Slide</button><button id="del">Delete</button><button class="primary" id="present">Present</button></div>
+</div>
+<p class="hint">Tap any text on the slide to edit it. Pasting keeps plain text only.</p>
+
+<div class="card"><h2>Themes</h2>
+ <div class="th"><button data-t="m">Mazhar (black)</button><button data-t="u">Udvash teal</button><button data-t="n">Neon purple</button></div>
+</div>
+
+<div class="card"><h2>Slide type</h2>
+ <div class="row">
+  <label class="f">Layout<select id="lay"><option value="list">MCQ – options in a list</option><option value="grid">MCQ – 2×2 options</option><option value="cq">CQ – question + answer box</option></select></label>
+  <label class="f">Option style<select id="ost"><option value="plain">Plain (like your design)</option><option value="box">Filled box</option><option value="outline">Outline box</option></select></label>
+  <label class="f">Header style<select id="hdr"><option value="glow">Glow banner (yours)</option><option value="tech">Tech bar (C-05)</option><option value="neon">Neon strip (NM)</option><option value="none">No header</option></select></label>
+ </div>
+ <div class="row" style="margin-top:8px"><label class="f" style="flex-direction:row;align-items:center;gap:8px;color:var(--ptext)"><input type="checkbox" id="stim"> Add stimulus (উদ্দীপক) block</label></div>
+</div>
+
+<div class="card"><h2>Colors</h2>
+ <div class="row">
+  <label class="f">Background<input type="color" id="c-bg" value="#000000"></label>
+  <label class="f">Text<input type="color" id="c-text" value="#ffffff"></label>
+  <label class="f">A B C D circle<input type="color" id="c-lab" value="#ffee00"></label>
+  <label class="f">MCQ number text<input type="color" id="c-numc" value="#ffe600"></label>
+  <label class="f">Glow / border<input type="color" id="c-glow" value="#ffffff"></label>
+  <label class="f">Option box fill<input type="color" id="c-box" value="#16202e"></label>
+ </div>
+</div>
+
+<div class="card"><h2>Shapes &amp; labels</h2>
+ <div class="row">
+  <label class="f">Box corners<select id="shape"><option value="1.6cqw">Rounded</option><option value="0">Square</option><option value="4cqw">Pill</option><option value=".7cqw">Slightly rounded</option></select></label>
+  <label class="f">Label shape<select id="lshape"><option value="50%">Round</option><option value=".7cqw">Rounded square</option><option value="0">Square</option></select></label>
+  <label class="f">Label weight<select id="lw"><option value="800|Barlow">Extra bold</option><option value="700|Barlow">Bold</option><option value="600|Barlow">Semi bold</option><option value="500|Barlow">Medium</option><option value="700|Barlow Condensed">Narrow bold</option></select></label>
+ </div>
+</div>
+
+<div class="card"><h2>Equation</h2>
+ <textarea id="tex" placeholder="Type LaTeX, e.g. \\frac{A^2}{\\sqrt{2}}"></textarea>
+ <div id="prev-eq"></div>
+ <div class="row snip" id="snip" style="margin-top:8px"></div>
+ <div class="row" style="margin-top:8px"><button id="eqins" class="primary">Insert equation</button></div>
+ <p class="hint">Click on the slide where it should go, then press Insert. Click an equation on the slide to edit it.</p>
+</div>
+
+<div class="card"><h2>Insert</h2>
+ <div class="row"><button id="imgbtn">Image into option</button><button id="logobtn">Upload logo</button></div>
+ <input type="file" id="file" accept="image/*" hidden><input type="file" id="logofile" accept="image/*" hidden>
+ <div class="sym" id="sym" style="margin-top:8px"></div>
+</div>
+</div>
+
+
+<script src="../node_modules/katex/dist/katex.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

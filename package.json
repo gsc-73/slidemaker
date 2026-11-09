@@ -1,0 +1,40 @@
+{
+  "name": "mcq-slide-maker",
+  "version": "0.1.0",
+  "description": "Offline MCQ and CQ slide maker",
+  "author": "Mazhar's Eduverse",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --publish never"
+  },
+  "dependencies": {
+    "katex": "^0.16.11",
+    "@fontsource/hind-siliguri": "^5.0.0",
+    "@fontsource/barlow": "^5.0.0",
+    "@fontsource/barlow-condensed": "^5.0.0"
+  },
+  "devDependencies": {
+    "electron": "^22.3.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.mazhars.mcqslides",
+    "productName": "MCQ Slide Maker",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
